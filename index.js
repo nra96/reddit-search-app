@@ -1,6 +1,7 @@
 import reddit from './redditapi';
 
 const searchForm = document.getElementById('search-form');
+const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search-input');
 
 //FORM EVENT LISTENER
@@ -13,7 +14,7 @@ searchForm.addEventListener('submit', e => {
     const searchLimit = document.getElementById('limit').value;
 
     // Check input
-    if (searchTerm === '') {
+    if (searchTerm == '') {
         // Show message
         showMessage('Please add a search term', 'alert-danger');
     }
@@ -24,13 +25,14 @@ searchForm.addEventListener('submit', e => {
     // Search Reddit 
     reddit.search(searchTerm, searchLimit, sortBy)
         .then(results => {
-            let output = '<div class="card-columns>';
+            let output = '<div class="card-columns">';
             //Loop through posts
             results.forEach(post => {
                 //Check for Image
-                const image = post.preview ? post.preview.image[0].source.url : 'https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2014/07/reddit-combo-1920-800x450.png';
+                const image = post.preview ? post.preview.images[0].source.url : 'https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2014/07/reddit-combo-1920-800x450.png';
 
-                output += `<div class="card">
+                output += `
+                <div class="card mb-2">
             <img class="card-img-top" src="${image}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${post.title}</h5>
@@ -72,7 +74,7 @@ function showMessage(message, className) {
     searchContainer.insertBefore(div, search);
 
     // Timeout alert
-    setTimeout(() => document.querySelector('alert').remove(), 3000);
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
 }
 
 //Truncate Text
