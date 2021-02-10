@@ -22,7 +22,25 @@ searchForm.addEventListener('submit', e => {
     searchInput.value = '';
 
     // Search Reddit 
-    reddit.search(searchTerm, searchLimit, sortBy);
+    reddit.search(searchTerm, searchLimit, sortBy)
+        .then(results => {
+            let output = '<div class="card-columns>';
+            //Loop through posts
+            results.forEach(post => {
+                output += `<div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">${post.title}</h5>
+              <p class="card-text">${post.selfText}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+            `;
+            });
+
+            output += '</div>';
+            document.getElementById('results').innerHTML = output;
+        });
 
     e.preventDefault();
 });
