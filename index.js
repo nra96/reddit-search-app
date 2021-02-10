@@ -11,10 +11,10 @@ searchForm.addEventListener('submit', e => {
     const searchLimit = document.getElementById('limit').value;
 
     // Check input
-    ifsearchTerm === ''){
-        // Show message
-        showMessage('Please add a search term', 'alert-danger');
+    if(searchTerm === ''){
+    // Show message
+    showMessage('Please add a search term', 'alert-danger');
     }
 
-    e.preventDefault();
+e.preventDefault();
 });
