@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "nra96",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nra96/reddit-search-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nra96/reddit-search-app/issues"
+  },
+  "homepage": "https://github.com/nra96/reddit-search-app#readme"
 }
