@@ -27,8 +27,11 @@ searchForm.addEventListener('submit', e => {
             let output = '<div class="card-columns>';
             //Loop through posts
             results.forEach(post => {
+                //Check for Image
+                const image = post.preview ? post.preview.image[0].source.url : 'https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2014/07/reddit-combo-1920-800x450.png';
+
                 output += `<div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="${image}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${post.title}</h5>
               <p class="card-text">${truncateText(post.selftext, 100)}</p>
